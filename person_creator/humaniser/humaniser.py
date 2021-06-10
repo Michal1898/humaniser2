@@ -62,7 +62,8 @@ def random_person(sex=FEMALE, age_min = 1, age_max = 99, count=1):
         days_between_dates = time_between_dates.days
         random_number_of_days = randrange(days_between_dates)
         random_date = start_date + timedelta(days=random_number_of_days)
-        person["birthdate"] = random_date.strftime("%d-%m-%Y")
+        # person["birthdate"] = random_date.strftime("%d-%m-%Y")
+        person["birthdate"] = random_date
 
         random_address=choice(addresses)
         random_address = random_address[0]
