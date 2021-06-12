@@ -1,17 +1,21 @@
 import csv
+import datetime
+import random
 from random import choice, randrange, getrandbits
 from datetime import timedelta, date
 from random import shuffle
+from dateutil.relativedelta import relativedelta
 import os
+from radar import random_datetime
 
 FEMALE = True
 MALE = False
 
 def random_person(sex=FEMALE, age_min = 1, age_max = 99, count=1):
     person={}
-    start_date=date.today()-timedelta(365*age_max)
-    end_date=date.today()-timedelta(365*age_min)
-    #print( end_date, start_date)
+    current_date = date.today()
+    start_date=current_date-relativedelta(years=age_max)
+    end_date=current_date-relativedelta(years=age_min)
 
     gender = sex
 
@@ -58,11 +62,10 @@ def random_person(sex=FEMALE, age_min = 1, age_max = 99, count=1):
         random_surname = choice(surnames_list)
         person["surname"] = random_surname[1]
 
-        time_between_dates = end_date - start_date
-        days_between_dates = time_between_dates.days
-        random_number_of_days = randrange(days_between_dates)
-        random_date = start_date + timedelta(days=random_number_of_days)
-        # person["birthdate"] = random_date.strftime("%d-%m-%Y")
+        random_date = random_datetime(
+            start=start_date,
+            stop=end_date
+        )
         person["birthdate"] = random_date
 
         random_address=choice(addresses)
@@ -82,17 +85,18 @@ def random_person(sex=FEMALE, age_min = 1, age_max = 99, count=1):
 
 if __name__ == "__main__":
     # execute only if run as a script
-    a=random_person(MALE,18,30,3)
+    a=random_person(MALE,1,99,400)
     shuffle(a)
-    print(a)
+    #print(a)
     print(64*"*")
 
-    b=random_person(FEMALE,18,30,5)
+    b=random_person(FEMALE,0,100,400)
     shuffle(b)
-    print(b)
+    #print(b)
     c=a+b
     print(64*"*")
     print(c)
+    print(64*"*")
     shuffle(c)
     print(c)
 

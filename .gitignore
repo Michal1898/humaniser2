@@ -1,2 +1,5 @@
 /venv/
 /person_creator/migrations/
+db.sqlite3
+fixtures.json
+personal_db.json
