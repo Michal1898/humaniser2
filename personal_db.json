@@ -1,1 +1,0 @@
-[{"model": "person_creator.person", "pk": 1, "fields": {"firstname": "Michal", "surname": "Volf", "gender": false, "birthdate": "1981-05-29", "city": "Dvùr Králové nad Labem", "street": "Nábøeží Benešovo", "house_no": 1898, "plz": 54401}}]
